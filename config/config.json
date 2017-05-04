@@ -1,0 +1,10 @@
+{
+  "routes": [
+    {
+      "name": "hello",
+      "method": "GET",
+      "uri": "/hello/{id:[0-9]+}",
+      "func": "SayHello"
+    }
+  ]
+}
