@@ -9,23 +9,36 @@ import (
 	"../error"
 )
 
+var configFile = "config.json"
+
 type Configuration struct {
 	Routes []Route `json:"routes"`
+	File string
 }
 
-var configFile string = "config.json"
+func NewConfiguration(file string) *Configuration {
+	if file == "" {
+		file = configFile
+	}
+
+	config := Configuration{
+		File: file,
+	}
+
+	return &config
+}
 
 func (config *Configuration) SaveConfig() {
 	bytes, err := json.MarshalIndent(config, "", "  ")
 	error.CheckErr(err)
 
-	err = ioutil.WriteFile(configFile, bytes, 0644)
+	err = ioutil.WriteFile(config.File, bytes, 0644)
 	error.CheckErr(err)
 }
 
 func (config *Configuration) LoadConfig() {
 	_, currentFile, _, _ := runtime.Caller(0)
-	bytes, err := ioutil.ReadFile(path.Dir(currentFile) + "/" + configFile)
+	bytes, err := ioutil.ReadFile(path.Dir(currentFile) + "/" + config.File)
 	error.CheckErr(err)
 
 	err = json.Unmarshal(bytes, config)

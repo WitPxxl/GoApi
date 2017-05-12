@@ -20,10 +20,8 @@ type server struct {
 }
 
 func NewServer(port int) server {
-	configuration := config.Configuration{}
-
 	serv := server{
-		Config: &configuration,
+		Config: config.NewConfiguration(""),
 		HandleFunction: config.NewHandleFunction(),
 		Port: port,
 	}
