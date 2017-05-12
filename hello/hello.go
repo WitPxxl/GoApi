@@ -1,9 +1,9 @@
 package hello
 
 import (
-	"database/sql"
 	"encoding/json"
 	"net/http"
+	"strconv"
 
 	"../error"
 	"../interfaces"
@@ -13,9 +13,7 @@ import (
 )
 
 type Hello struct {
-	Id              int    `json:"id"`
-	TransactionType string `json:"transactionType"`
-	Price           int    `json:"price"`
+	Id int `json:"id"`
 }
 
 func (h Hello) ToJson() []byte {
@@ -29,20 +27,13 @@ func (h Hello) ToJson() []byte {
 func SayHello(r *http.Request) interfaces.Json {
 	vars := mux.Vars(r)
 
-	db, err := sql.Open("mysql", "athome:athome@tcp(127.0.0.1:3307)/immo")
-	defer db.Close()
+	id, err := strconv.Atoi(vars["id"])
 
 	error.CheckErr(err)
 
-	stmt, err := db.Prepare("SELECT id, transaction_type, price FROM offer WHERE id=?")
-
-	error.CheckErr(err)
-
-	row := stmt.QueryRow(vars["id"])
-
-	hello := Hello{}
-
-	row.Scan(&hello.Id, &hello.TransactionType, &hello.Price)
+	hello := Hello{
+		Id: id,
+	}
 
 	return hello
 }
