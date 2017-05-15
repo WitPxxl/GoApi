@@ -4,8 +4,8 @@ import (
 	"net/http"
 	"testing"
 
-	"../interfaces"
 	"github.com/stretchr/testify/assert"
+	"github.com/Witpxxl/GoApi/interfaces"
 )
 
 func TestNewHandleFunction(t *testing.T) {

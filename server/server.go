@@ -7,8 +7,8 @@ import (
 	"net/http"
 	"strconv"
 
-	"../config"
-	"../error"
+	"github.com/Witpxxl/GoApi/config"
+	"github.com/Witpxxl/GoApi/error"
 	"github.com/gorilla/mux"
 )
 

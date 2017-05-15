@@ -6,7 +6,7 @@ import (
 	"path"
 	"runtime"
 
-	"../error"
+	"github.com/Witpxxl/GoApi/error"
 )
 
 var configFile = "config.json"

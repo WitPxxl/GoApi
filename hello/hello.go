@@ -5,9 +5,8 @@ import (
 	"net/http"
 	"strconv"
 
-	"../error"
-	"../interfaces"
-
+	"github.com/Witpxxl/GoApi/error"
+	"github.com/Witpxxl/GoApi/interfaces"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/gorilla/mux"
 )

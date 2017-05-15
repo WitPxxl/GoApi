@@ -3,7 +3,7 @@ package config
 import (
 	"net/http"
 
-	"../interfaces"
+	"github.com/Witpxxl/GoApi/interfaces"
 )
 
 type HandleFunction struct {

@@ -1,9 +1,9 @@
 package main
 
 import (
-	"./config"
-	"./hello"
-	"./server"
+	"github.com/Witpxxl/GoApi/config"
+	"github.com/Witpxxl/GoApi/hello"
+	"github.com/Witpxxl/GoApi/server"
 )
 
 var list = map[string]config.Handled{
